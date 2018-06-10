@@ -9,7 +9,6 @@ metadata:
     heritage: {{ .Release.Service }}
     draft: {{ default "draft-app" .Values.draft }}
 spec:
-  serviceAccountName: {{ template "fullname" . }}
   replicas: {{ .Values.replicaCount }}
   template:
     metadata:
@@ -20,6 +19,7 @@ spec:
       annotations:
         buildID: {{ .Values.buildID }}
     spec:
+      serviceAccountName: {{ template "fullname" . }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

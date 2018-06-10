@@ -83,7 +83,7 @@ app.post("/v1/webhook/:hook/:project", (req, res) => {
     // create the event, and the Brigade controller will take over
     // from there.
     brigEvent = new Event(namespace);
-    brigEvent.create(eventName, project, payload).then(() => {
+    brigEvent.create(eventName, project, (Object.keys(payload).length === 0 ? "" : payload)).then(() => {
         // At this point, we know the event was created. So
         // we send a trivial response.
         res.json({"status": "accepted"});
