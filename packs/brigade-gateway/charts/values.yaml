@@ -13,7 +13,7 @@ env:
     value: "hello world"
 
 rbac:
-  enabled: false
+  enabled: true
 
 replicaCount: 1
 image:
